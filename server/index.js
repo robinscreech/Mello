@@ -1,12 +1,11 @@
 var express = require('express');
 var app = express();
+var cors = require('cors')
 
 //app.get('/', (req, res) => res.send('hello world'))
-
+app.use(cors())
 app.get('/edit', (req, res) => res.send('Youre now on the editing page'))
-
 app.listen(3000, () => console.log('App listening on port 3000'))
-
 
 // setting up mongodb connection (using mongoose)
 var mongoose = require('mongoose');

@@ -14,12 +14,12 @@ module.exports = {
         loaders: [
             {
                 test: /\.js$/,
-                exclude: /node_modules/,
+                exclude: [/node_modules/, /data/],
                 loader: "babel-loader"
             },
             {
                 test: /\.less$/,
-                exclude: /node-modules/,
+                exclude: [/node-modules/, /data/],
                 use:ExtractTextPlugin.extract({
                     fallback: "style-loader",
                     use: ["css-loader", "less-loader"]
@@ -34,5 +34,8 @@ module.exports = {
     plugins: [
         HTMLWebpackPluginConfig,
         new ExtractTextPlugin("styles/styles.css")
-    ]
+    ],
+    node:{
+        fs:"empty"
+    }
 };
