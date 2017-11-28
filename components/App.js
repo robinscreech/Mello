@@ -5,34 +5,29 @@ export default class App extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            title: "", //needs to be an array
-            content: "" // needs to be an array
+            data: []
         }
     };//end constructor
 
     componentDidMount(){
         //This does the Fetch: set const func
-        let cardTitle = "";
-        let cardContent = "";
         const urlAddress = "http://localhost:3000"
         fetch(urlAddress)
             .then(response => {
                 response.json().then(jsonRes => {
-                    console.log(jsonRes);
-                    cardTitle = jsonRes[0].title;
-                    cardContent = jsonRes[0].content;
-                    this.setState({title: cardTitle, content:cardContent})
+                    this.setState({data:jsonRes})
                 })
             })
     }
 
   render() {
-  return (
-    <div class='card'> 
-        <h1>Title: {this.state.title}</h1>
-        <p>{this.state.content}</p>
-        <Meta date='12/12/12' author='RScreech'/>
-    </div>
+        const data = this.state.data;
+        const cards = data.map((d) => <div class="card" key={d._id}><div class="card_title">{d.title}</div><div class="card_content">{d.content}</div></div>)
+
+        return (
+        <div class="container"> 
+            {cards}
+        </div>
     )
   }
 }
