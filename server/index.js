@@ -27,7 +27,6 @@ var cardSchema = new Schema({
 //-----------CODE TO OUTPUT CARDS TO SCREEN
 Card.find(function(err, cards){
     if(err) return console.error(err);
-    console.log(cards)
     app.get('/', (req, res) => res.send(cards))
 })
 
