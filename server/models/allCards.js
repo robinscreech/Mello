@@ -1,3 +1,8 @@
+/**
+ * Data goes to ../Controllers/allCards.js
+ * Exports all Cards Schema
+ */
+
 var mongoose = require('mongoose');
 
  //-----------CODE TO ADD CARDS TO MONGO

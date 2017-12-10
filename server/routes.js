@@ -7,5 +7,5 @@ var express = require ('express')
 var router = express.Router();
 
 module.exports ={
-	'/': require('./controllers/allCards')
+	'/api/allcards': require('./controllers/allCards')
 }

@@ -13,7 +13,7 @@ export default class App extends React.Component {
 
     componentDidMount(){
         //This does the Fetch: set const func
-        const urlAddress = "http://localhost:3000"
+        const urlAddress = "http://localhost:3000/api/allcards"
         fetch(urlAddress)
             .then(response => {
                 response.json().then(jsonRes => {
@@ -35,9 +35,30 @@ export default class App extends React.Component {
         i++;
         const cardData = this.state;        
         let inputValue = cardData.data[i].content;
-        cardData.data[i].content = <textarea defaultValue={inputValue}></textarea>; 
-        cardData.data[i].isEdit = 1;
-        this.setState({cardData})       
+        cardData.data[i].content = <textarea defaultValue={inputValue} />; 
+        cardData.data[i].isEdit == 0 ? cardData.data[i].isEdit = 1 : cardData.data[i].isEdit = 0
+        this.setState({cardData})
+
+        /**
+         * Setting call to server to update card
+         * endpoint {/api/card/update:id}
+         * id = {field id}
+         */
+
+        if (cardData.data[i].isEdit == 0){
+            console.log('Will post some data now')
+            fetch('http://localhost:3000/api/card/update:id', {
+              method: 'POST',
+              headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                firstParam: 'yourValue',
+                secondParam: 'yourOtherValue',
+              })
+            })
+        }       
     }
 
 
