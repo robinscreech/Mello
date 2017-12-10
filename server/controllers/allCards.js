@@ -10,6 +10,14 @@ var router = express.Router();
 
 var Cards = require('../models/allCards');
 
+
+// -----------CODE TO ADD CARDS TO MONGO
+// var card1 = new Cards ({title: "Test", content: 'This is a cardmongo and mongoose schema'})
+//  card1.save(function (err, card1){
+//          if (err) return console.err(err);
+//          console.log('Card Saved')
+//      })
+
 module.exports = function index(req, res) {
 	Cards.find({}, function(err, result) {
 		if (!err) {

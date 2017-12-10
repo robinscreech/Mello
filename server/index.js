@@ -7,7 +7,10 @@ var app = express();
 var cors = require('cors');
 var mongoose = require('mongoose');
 var routes = require ('./routes')
+var bodyParser = require('body-parser');
 
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use(cors())
 app.listen(3000, () => console.log('App listening on port 3000'))
 

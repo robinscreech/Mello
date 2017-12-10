@@ -16,6 +16,7 @@ export default class Card extends React.Component {
             <div className='card_edit'>
                 {isEditText}
             </div>
+            <div className='card_delete'>Delete</div>
         </div>
     )
   }
